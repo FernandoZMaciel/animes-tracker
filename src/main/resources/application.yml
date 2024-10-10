@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:admin@otakalolcluster.z4b56.mongodb.net/?retryWrites=true&w=majority&appName=OtakalolCluster
+      database: User

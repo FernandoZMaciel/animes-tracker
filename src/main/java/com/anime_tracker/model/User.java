@@ -17,9 +17,9 @@ import java.util.List;
 
 public class User {
     @Id
-    private int id;
+    private String id;
     private String username;
     private String password;
     private String email;
-    private List<Anime> watchedAnimes;
+    //private List<Anime> watchedAnimes;
 }

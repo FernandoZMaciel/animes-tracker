@@ -17,6 +17,6 @@ public class Anime {
     private String name;
     private int episodes;
     private int watchedEpisodes;
-    private List<Genre> genres;
-    private List<Theme> themes;
+    private List<String> genres;
+    private List<String> themes;
 }
