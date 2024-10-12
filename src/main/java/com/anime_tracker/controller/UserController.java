@@ -59,4 +59,10 @@ public class UserController {
         List<Anime> animeList = AnimeUtil.ResponseAnimeToAnime(animeService.getAnimesListByGenresAndThemes());
         return AnimeUtil.removeRepeatedAnimes(user, animeList);
     }
+
+    @GetMapping("/recommendaion/{id}")
+    public List<Anime> getRecommendationByUserId(@PathVariable String id) {
+        return userService.getRecommendation(id);
+    }
+
 }

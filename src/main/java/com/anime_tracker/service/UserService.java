@@ -3,6 +3,8 @@ package com.anime_tracker.service;
 import com.anime_tracker.model.Anime;
 import com.anime_tracker.model.User;
 import com.anime_tracker.repository.UserRepository;
+import com.anime_tracker.utils.AnimeUtil;
+import com.anime_tracker.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private AnimeService animeService;
 
 
     public User addUser(User user) {
@@ -45,5 +49,23 @@ public class UserService {
     public String deleteUser(String userId) {
         userRepository.deleteById(userId);
         return "User deleted: " + userId;
+    }
+
+    public List<Anime> getRecommendation(String userId) {
+        User user = getUserById(userId);
+        Map<String, Integer> mostViewedGenres = UserUtil.getMostViewedGenres(user);
+        Map<String, Integer> mostViewedTags = UserUtil.getMostViewedTags(user);
+
+        int tolerance = 3;
+
+        List<Anime> animeList = new ArrayList<>();
+        while (animeList.size() < 5 && tolerance > 0) {
+            String genres = UserUtil.querryToString(mostViewedGenres, tolerance);
+            String tags = UserUtil.querryToString(mostViewedTags, tolerance);
+            animeList = AnimeUtil.ResponseAnimeToAnime(animeService.getAnimesListByGenresAndThemes(genres, tags));
+            animeList = AnimeUtil.removeRepeatedAnimes(user, animeList);
+            tolerance--;
+        }
+        return animeList.subList(0, 5);
     }
 }

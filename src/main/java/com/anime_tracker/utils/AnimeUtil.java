@@ -55,7 +55,6 @@ public class AnimeUtil {
             animeList.add(anime);
         }
         List<Anime> filteredAnimes = removeSequencesAndBadAnime(animeList);
-        log.info(filteredAnimes.size());
         return filteredAnimes;
     }
 
