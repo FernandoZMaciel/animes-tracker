@@ -1,5 +1,6 @@
 package com.anime_tracker.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,10 +14,8 @@ import java.util.List;
 @Builder
 
 public class Anime {
-    private String id;
-    private String name;
-    private int episodes;
-    private int watchedEpisodes;
+    private int id;
+    private String title;
     private List<String> genres;
-    private List<String> themes;
+    private List<String> tags;
 }
