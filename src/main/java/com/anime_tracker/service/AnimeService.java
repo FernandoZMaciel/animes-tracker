@@ -19,8 +19,8 @@ public class AnimeService {
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
         String query = "{\n" +
                 "\"query\": \"query {\\n" +
-                "  Page(page: 1, perPage: 3) {\\n" +
-                "    media(type: ANIME, sort: POPULARITY_DESC, genre_in: [\\\"Action\\\", \\\"Drama\\\", \\\"Suspense\\\"], tag_in: [\\\"Gore\\\", \\\"Military\\\", \\\"Survival\\\"]) {\\n" +
+                "  Page(page: 1, perPage: 20) {\\n" +
+                "    media(type: ANIME, sort: POPULARITY_DESC, genre_in: [\\\"Action\\\", \\\"Adventure\\\", \\\"Fantasy\\\"], tag_in: [\\\"Shounen\\\", \\\"Super Power\\\"]) {\\n" +
                 "      id\\n" +
                 "      title {\\n" +
                 "        romaji\\n" +
@@ -55,6 +55,8 @@ public class AnimeService {
                 "      }\\n" +
                 "      source\\n" +
                 "      averageScore\\n" +
+                "      episodes\\n" +
+                "      seasonYear\\n" +
                 "    }\\n" +
                 "  }\\n" +
                 "}\",\n" +

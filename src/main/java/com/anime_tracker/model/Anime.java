@@ -1,10 +1,7 @@
 package com.anime_tracker.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,10 +9,24 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 public class Anime {
+    @EqualsAndHashCode.Include
     private int id;
-    private String title;
+    private String titleEnglish;
+    private String titleRomaji;
+    private String descriptionEnglish;
+    private String coverImage;
     private List<String> genres;
     private List<String> tags;
+    private String studios;
+    private String source;
+    private int year;
+    private int averageScore;
+    private String author;
+    private String mainDirector;
+    private int numberOfEpisodes;
+    private int episodeCount;
+    private Status status;
 }

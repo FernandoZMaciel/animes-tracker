@@ -1,12 +1,12 @@
 package com.anime_tracker.service;
 
+import com.anime_tracker.model.Anime;
 import com.anime_tracker.model.User;
 import com.anime_tracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -37,7 +37,8 @@ public class UserService {
         existingUser.setUsername(requestUser.getUsername());
         existingUser.setPassword(requestUser.getPassword());
         existingUser.setEmail(requestUser.getEmail());
-        //existingUser.setWatchedAnimes(requestUser.getWatchedAnimes());
+        Set<Anime> watchedAnimes = new HashSet<>(requestUser.getWatchedAnimes());
+        existingUser.setWatchedAnimes(new ArrayList<>(watchedAnimes));
         return userRepository.save(existingUser);
     }
 

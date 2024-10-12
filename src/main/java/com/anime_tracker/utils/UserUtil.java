@@ -31,7 +31,7 @@ public class UserUtil {
         return mostViewedGenres;
     }
 
-    public static Map<String, Integer> getMostViewedThemes(User user){
+    public static Map<String, Integer> getMostViewedTags(User user){
         Map<String, Integer> viewedGenres = new HashMap<>();
 
         for (Anime anime : user.getWatchedAnimes()) {
@@ -40,7 +40,7 @@ public class UserUtil {
             }
         }
 
-        Map<String, Integer> mostViewedThemes = viewedGenres.entrySet()
+        return viewedGenres.entrySet()
                 .stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .collect(Collectors.toMap(
@@ -49,7 +49,6 @@ public class UserUtil {
                         (e1, e2) -> e1,
                         LinkedHashMap::new
                 ));
-        return mostViewedThemes;
     }
 
 }

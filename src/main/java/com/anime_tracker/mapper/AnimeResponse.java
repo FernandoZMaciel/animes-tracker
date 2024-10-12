@@ -39,6 +39,8 @@ public class AnimeResponse {
         private Studio studios;
         private String source;
         private int averageScore;
+        private int episodes;
+        private int seasonYear;
     }
 
     @Setter

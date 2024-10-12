@@ -1,7 +1,10 @@
 package com.anime_tracker.controller;
 
+import com.anime_tracker.model.Anime;
 import com.anime_tracker.model.User;
+import com.anime_tracker.service.AnimeService;
 import com.anime_tracker.service.UserService;
+import com.anime_tracker.utils.AnimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AnimeService animeService;
 
 
     @PostMapping
@@ -45,5 +50,13 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteUserById(@PathVariable String id) {
         return userService.deleteUser(id);
+    }
+
+    @GetMapping("/animes/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Anime> getRecommendedAnimes(@PathVariable String id) {
+        User user = userService.getUserById(id);
+        List<Anime> animeList = AnimeUtil.ResponseAnimeToAnime(animeService.getAnimesListByGenresAndThemes());
+        return AnimeUtil.removeRepeatedAnimes(user, animeList);
     }
 }
