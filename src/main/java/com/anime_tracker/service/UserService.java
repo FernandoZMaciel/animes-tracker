@@ -59,13 +59,13 @@ public class UserService {
         int tolerance = 3;
 
         List<Anime> animeList = new ArrayList<>();
-        while (animeList.size() < 5 && tolerance > 0) {
+        while (animeList.size() < 6 && tolerance > 0) {
             String genres = UserUtil.querryToString(mostViewedGenres, tolerance);
             String tags = UserUtil.querryToString(mostViewedTags, tolerance);
             animeList = AnimeUtil.ResponseAnimeToAnime(animeService.getAnimesListByGenresAndThemes(genres, tags));
             animeList = AnimeUtil.removeRepeatedAnimes(user, animeList);
             tolerance--;
         }
-        return animeList.subList(0, 5);
+        return animeList.subList(0, 6);
     }
 }
