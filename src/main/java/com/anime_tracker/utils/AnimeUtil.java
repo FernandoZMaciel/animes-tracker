@@ -23,7 +23,7 @@ public class AnimeUtil {
                     .titleRomaji(animeResponse.getTitle().getRomaji())
                     .descriptionEnglish(animeResponse.getDescription())
                     .coverImage(animeResponse.getCoverImage().getLarge())
-                    .studios(animeResponse.getStudios().getStudioEdge().getFirst().getNode().getName())
+                    .studios(animeResponse.getStudios().getStudioEdge().get(0).getNode().getName())
                     .source(animeResponse.getSource())
                     .year(animeResponse.getSeasonYear())
                     .averageScore(animeResponse.getAverageScore())
