@@ -31,4 +31,4 @@ AnimesTracker é uma aplicação que permite aos usuários registrar e acompanha
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/animestracker.git
+   git clone https://github.com/FernandoZMaciel/animestracker.git
